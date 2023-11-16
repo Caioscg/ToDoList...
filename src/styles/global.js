@@ -8,12 +8,13 @@ export default createGlobalStyle`
     }
 
     body {
-        background-color: ${({ theme }) => theme.COLORS.DARK_200};
+        background-color: ${({ theme }) => theme.COLORS.BLUE_200};
         color: ${({ theme }) => theme.COLORS.LIGHT_200};
     }
 
     body, input, button, textarea {
         //font-family: 'Poppins', sans-serif;
+        font-family: 'Montserrat', sans-serif;
         outline: none;
     }
 
