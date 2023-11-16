@@ -13,28 +13,54 @@ export const Container = styled.div`
     .hide {
         display: none;
     }
+
+    .move {
+
+    }
 `
 
 export const SignIn = styled.div`
-    padding: 64px;
+    padding: 52px 64px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 24px;
 
-    background-color: ${({ theme }) => theme.COLORS.DARK_100};
+    animation: moveRightMiddle ease-in .5s forwards;
+
+    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.8);
 
     border-radius: 12px;
 
     h1 {
         margin-bottom: 16px;
         font-size: 42px;
+
+        text-shadow: 2px 2px ${({ theme }) => theme.COLORS.DARK_100};
     }
 `
 
 export const SignUp = styled.div`
+    padding: 52px 64px;
 
+    animation: moveMiddleLeft ease-out .5s .5s backwards;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+
+    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.8);
+
+    border-radius: 12px;
+
+    h1 {
+        margin-bottom: 16px;
+        font-size: 42px;
+
+        text-shadow: 2px 2px ${({ theme }) => theme.COLORS.DARK_100};
+    }
 `
 
 export const Main = styled.div`
@@ -45,15 +71,22 @@ export const Main = styled.div`
     flex-direction: column;
     gap: 64px;
 
+    margin-bottom: 64px;
+
+    animation: moveMainRight ease-in .5s forwards, moveMainLeft ease-out .5s .5s forwards;
+    
     img {
         width: 600px;
     }
 
-    .message {
+    .signInMessage {
         text-align: left;
-        width: 100%;        p {
-            font-weight: 400;
+        width: 100%;
+
+        h1 {
+            text-shadow: 2px 2px ${({ theme }) => theme.COLORS.DARK_100};
         }
+        
     }
 
 `

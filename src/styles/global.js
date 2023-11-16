@@ -39,4 +39,68 @@ export default createGlobalStyle`
     }
 
     //animations:
+
+    @keyframes moveRightMiddle {
+        0% {
+            transform: translateX(0);
+            opacity: 75%;
+        }
+        50% {
+            opacity: 33%;
+        }
+        100% {
+            transform: translateX(-100%);
+            opacity: 0;
+            display: none;
+        }
+    }
+    @keyframes moveMiddleLeft {
+        0% {
+            transform: translateX(100%);
+            display: none;
+            opacity: 0;
+        }
+        1% {
+            display: block;
+        }
+        50% {
+            opacity: 50%;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 100%;
+        }
+    }
+    @keyframes moveLeftMiddle {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(100%);
+        }
+    }
+    @keyframes moveMiddleRight {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+    @keyframes moveMainRight {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(30%);
+        }
+    }
+    @keyframes moveMainLeft {
+        0% {
+            transform: translateX(-150px);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
 `
