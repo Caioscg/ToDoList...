@@ -24,7 +24,7 @@ export default createGlobalStyle`
 
     button, a {
         cursor: pointer;
-        transition: filter 0.2s;
+        transition: all .5s;
     }
 
     button:hover, a:hover {
@@ -74,20 +74,35 @@ export default createGlobalStyle`
     @keyframes moveLeftMiddle {
         0% {
             transform: translateX(0);
+            opacity: 75%;
+        }
+        50% {
+            opacity: 33%;
         }
         100% {
             transform: translateX(100%);
+            opacity: 0;
+            display: none;
         }
     }
     @keyframes moveMiddleRight {
         0% {
             transform: translateX(-100%);
+            display: none;
+            opacity: 0;
+        }
+        1% {
+            display: block;
+        }
+        50% {
+            opacity: 50%;
         }
         100% {
             transform: translateX(0);
+            opacity: 100%;
         }
     }
-    @keyframes moveMainRight {
+    @keyframes moveMainRight1 {
         0% {
             transform: translateX(0);
         }
@@ -95,9 +110,25 @@ export default createGlobalStyle`
             transform: translateX(30%);
         }
     }
-    @keyframes moveMainLeft {
+    @keyframes moveMainRight2 {
         0% {
-            transform: translateX(-150px);
+            transform: translateX(-250px);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+    @keyframes moveMainLeft1 {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-30%);
+        }
+    }
+    @keyframes moveMainLeft2 {
+        0% {
+            transform: translateX(250px);
         }
         100% {
             transform: translateX(0);

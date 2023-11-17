@@ -10,12 +10,29 @@ export const Container = styled.div`
 
     padding: 128px;
 
-    .hide {
+    #hide {
         display: none;
     }
 
-    .move {
+    #main-right {
+        animation: moveMainRight1 ease-in .5s forwards, moveMainRight2 ease-out .5s .5s forwards;
+    }
+    #main-left {
+        animation: moveMainLeft1 ease-in .5s forwards, moveMainLeft2 ease-out .5s .5s forwards;
+    }
 
+    #signup-op {
+        animation: moveMiddleLeft ease-out .5s .5s backwards;
+    }
+    #signup-end {
+        animation: moveLeftMiddle ease-in .5s forwards;
+    }
+
+    #signin-end {
+        animation: moveRightMiddle ease-in .5s forwards;
+    }
+    #signin-op {
+        animation: moveMiddleRight ease-out .5s .5s backwards;
     }
 `
 
@@ -27,8 +44,6 @@ export const SignIn = styled.div`
     align-items: center;
     gap: 24px;
 
-    animation: moveRightMiddle ease-in .5s forwards;
-
     box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.8);
 
     border-radius: 12px;
@@ -39,12 +54,17 @@ export const SignIn = styled.div`
 
         text-shadow: 2px 2px ${({ theme }) => theme.COLORS.DARK_100};
     }
+    a {
+        color: ${({ theme }) => theme.COLORS.DARK_200};
+        font-weight: 700;
+    }
+    a:hover {
+        color: ${({ theme }) => theme.COLORS.DARK_100};
+    }
 `
 
 export const SignUp = styled.div`
     padding: 52px 64px;
-
-    animation: moveMiddleLeft ease-out .5s .5s backwards;
 
     display: flex;
     flex-direction: column;
@@ -60,6 +80,13 @@ export const SignUp = styled.div`
         font-size: 42px;
 
         text-shadow: 2px 2px ${({ theme }) => theme.COLORS.DARK_100};
+    }
+    a {
+        color: ${({ theme }) => theme.COLORS.DARK_200};
+        font-weight: 700;
+    }
+    a:hover {
+        color: ${({ theme }) => theme.COLORS.DARK_100};
     }
 `
 
@@ -72,8 +99,6 @@ export const Main = styled.div`
     gap: 64px;
 
     margin-bottom: 64px;
-
-    animation: moveMainRight ease-in .5s forwards, moveMainLeft ease-out .5s .5s forwards;
     
     img {
         width: 600px;
@@ -86,7 +111,13 @@ export const Main = styled.div`
         h1 {
             text-shadow: 2px 2px ${({ theme }) => theme.COLORS.DARK_100};
         }
-        
     }
+    .signUpMessage {
+        text-align: right;
+        width: 100%;
 
+        h1 {
+            text-shadow: 2px 2px ${({ theme }) => theme.COLORS.DARK_100};
+        }
+    }
 `

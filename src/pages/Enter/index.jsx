@@ -9,17 +9,34 @@ import { useRef } from "react";
 import transparente from "../../assets/todolist-high-resolution-logo-transparent.png"
 
 export function Enter() {
+    const signin = useRef(null)
+    const signup = useRef(null)
+    const main = useRef(null)
+
+    function showSignUp() {
+        signup.current.id = "signup-op"
+        signin.current.id = "signin-end"
+        main.current.id = "main-right"
+    }
+
+    function showSignIn() {
+        signup.current.id = "signup-end"
+        signin.current.id = "signin-op"
+        main.current.id = "main-left"
+    }
+
     return(
         <Container>
-            <SignUp className="">
+            <SignUp id="hide" ref={signup}>
                 <h1>Sign Up</h1>
                 <Input icon={FiUser} placeholder="Name"/>
                 <Input icon={FiMail} placeholder="E-mail"/>
                 <Input icon={FiLock} type="password" placeholder="Password"/>
                 <Button title="Create your account"/>
+                <a onClick={showSignIn}>I already have an account</a>
             </SignUp>
 
-            <Main>
+            <Main ref={main}>
                 <img src={transparente} alt="" />
                 <div className="signInMessage">
                     <h1>Welcome back!</h1>
@@ -28,13 +45,21 @@ export function Enter() {
                         We hope you have a great week!
                     </p>
                 </div>
+                <div className="signInMessage" id="hide">
+                    <h1>Hello friend!</h1>
+                    <p>Sign up organize your schedule.
+                        <br /> <br />
+                        We hope you have a great week!
+                    </p>
+                </div>
             </Main>
 
-            <SignIn className="">
+            <SignIn ref={signin}>
                 <h1>Sign In</h1>
                 <Input icon={FiMail} placeholder="E-mail"/>
                 <Input icon={FiLock} type="password" placeholder="Password"/>
                 <Button title="Sing In"/>
+                <a onClick={showSignUp}>I don't have an account yet</a>
             </SignIn>
 
         </Container>
