@@ -109,7 +109,11 @@ export const Main = styled.div`
         width: 100%;
 
         h1 {
+            font-size: 40px;
             text-shadow: 2px 2px ${({ theme }) => theme.COLORS.DARK_100};
+        }
+        p {
+            font-size: 20px;
         }
     }
     .signUpMessage {
@@ -117,7 +121,11 @@ export const Main = styled.div`
         width: 100%;
 
         h1 {
+            font-size: 40px;
             text-shadow: 2px 2px ${({ theme }) => theme.COLORS.DARK_100};
+        }
+        p {
+            font-size: 20px;
         }
     }
 `

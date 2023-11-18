@@ -13,16 +13,27 @@ export function Enter() {
     const signup = useRef(null)
     const main = useRef(null)
 
+    const signInMessage = useRef(null)
+    const signUpMessage = useRef(null)
+
     function showSignUp() {
         signup.current.id = "signup-op"
         signin.current.id = "signin-end"
         main.current.id = "main-right"
+        setTimeout(() => {
+            signInMessage.current.id="hide"
+            signUpMessage.current.id=""
+        }, 500)
     }
 
     function showSignIn() {
         signup.current.id = "signup-end"
         signin.current.id = "signin-op"
         main.current.id = "main-left"
+        setTimeout(() => {
+            signInMessage.current.id=""
+            signUpMessage.current.id="hide"
+        }, 500)
     }
 
     return(
@@ -38,14 +49,14 @@ export function Enter() {
 
             <Main ref={main}>
                 <img src={transparente} alt="" />
-                <div className="signInMessage">
+                <div className="signInMessage" ref={signInMessage}>
                     <h1>Welcome back!</h1>
                     <p>Sign in to see your schedule.
                         <br /> <br />
                         We hope you have a great week!
                     </p>
                 </div>
-                <div className="signInMessage" id="hide">
+                <div className="signUpMessage" id="hide" ref={signUpMessage}>
                     <h1>Hello friend!</h1>
                     <p>Sign up organize your schedule.
                         <br /> <br />
