@@ -12,12 +12,13 @@ export function Home() {
             amountOfDays = 30
         }
         else if (month == 2) {
-            amountOfDays = 29
+            amountOfDays = 29 // calc ano bixesto
         }
         else {
             amountOfDays = 31
         }
     }
+    
 
     monthDays()
 
