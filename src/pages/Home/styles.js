@@ -8,3 +8,9 @@ export const Container = styled.div`
 export const Head = styled.div`
     
 `
+
+export const Day = styled.div`
+    width: fit-content;
+    padding: 32px;
+    border-radius: 8px;
+`
