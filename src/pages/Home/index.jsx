@@ -4,7 +4,9 @@ export function Home() {
     const data = new Date()
 
     const month = data.getMonth() + 1
-    const day = data.getDate()
+    const dayOfTheMonth = data.getDate()
+    const dayOfTheWeek = data.getDay()
+
     let amountOfDays
 
     function monthDays() {

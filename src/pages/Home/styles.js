@@ -14,3 +14,8 @@ export const Day = styled.div`
     padding: 32px;
     border-radius: 8px;
 `
+
+export const Schedule = styled.div`
+    height: 100%;
+    padding: 48px;
+`
