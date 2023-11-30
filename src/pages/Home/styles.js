@@ -15,14 +15,6 @@ export const Container = styled.div`
     }
 `
 
-export const Day = styled.div`
-    width: fit-content;
-    padding: 32px;
-    border-radius: 8px;
-
-    background-color: ${({ theme }) => theme.COLORS.DARK_100};
-`
-
 export const Schedule = styled.div`
     height: 100%;
     padding: 48px;
