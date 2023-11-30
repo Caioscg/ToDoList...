@@ -6,7 +6,7 @@ import { Button } from "../../components/Button";
 import { FiUser, FiMail, FiLock } from "react-icons/fi"
 import { useRef } from "react";
 
-import transparente from "../../assets/todolist-high-resolution-logo-transparent.png"
+import logo from "../../assets/todolist-high-resolution-logo-transparent.png"
 
 export function Enter() {
     const signin = useRef(null)
@@ -48,7 +48,7 @@ export function Enter() {
             </SignUp>
 
             <Main ref={main}>
-                <img src={transparente} alt="" />
+                <img src={logo} alt="" />
                 <div className="signInMessage" ref={signInMessage}>
                     <h1>Welcome back!</h1>
                     <p>Sign in to see your schedule.

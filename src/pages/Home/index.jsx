@@ -1,4 +1,6 @@
-import { Container } from "./styles";
+import { Container, Day, Schedule } from "./styles";
+
+import { Header } from "../../components/Header";
 
 export function Home() {
     const data = new Date()
@@ -26,7 +28,10 @@ export function Home() {
 
     return(
         <Container>
-            
+            <Header />
+            <main>
+                
+            </main>
         </Container>
     )
 }
