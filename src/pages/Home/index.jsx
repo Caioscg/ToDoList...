@@ -31,7 +31,11 @@ export function Home() {
         <Container>
             <Header />
             <main>
-                <Day number={30} day="Thu"/>
+                <div className="days">
+                    <Day number={28} day="Tue"/>
+                    <Day number={29} day="Wed"/>
+                    <Day number={30} day="Thu"/>
+                </div>
             </main>
         </Container>
     )
