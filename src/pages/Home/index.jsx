@@ -36,6 +36,9 @@ export function Home() {
                     <Day number={29} day="Wed"/>
                     <Day number={30} day="Thu"/>
                 </div>
+                <Schedule>
+                    
+                </Schedule>
             </main>
         </Container>
     )

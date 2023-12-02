@@ -12,10 +12,16 @@ export const Container = styled.div`
 
     > main {
         grid-area: "content";
+        padding: 32px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 76px;
 
         .days {
             width: 100%;
-            padding: 32px 64px;
+            padding: 0 64px;
 
             display: flex;
             align-items: center;
@@ -27,6 +33,10 @@ export const Container = styled.div`
 `
 
 export const Schedule = styled.div`
-    height: 100%;
+    height: 80%;
     padding: 48px;
+    width: 600px;
+    border-radius: 12px;
+
+    background-color: ${({ theme }) => theme.COLORS.DARK_200};
 `
