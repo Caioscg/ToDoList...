@@ -6,7 +6,7 @@ export const Container = styled.div`
 
     display: grid;
     grid-template-rows: 116px auto;
-    grid-template-areas: 
+    grid-template-areas:
     "header"
     "content";
 
@@ -17,7 +17,7 @@ export const Container = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 76px;
+        gap: 56px;
 
         .days {
             width: 100%;
