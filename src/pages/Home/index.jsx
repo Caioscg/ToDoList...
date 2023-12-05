@@ -2,6 +2,7 @@ import { Container, Schedule } from "./styles";
 
 import { Header } from "../../components/Header";
 import { Day } from "../../components/Day";
+import { ButtonText } from "../../components/ButtonText";
 
 export function Home() {
     const data = new Date()
@@ -36,9 +37,21 @@ export function Home() {
                     <Day number={29} day="Wed"/>
                     <Day number={30} day="Thu"/>
                 </div>
-                <Schedule>
-                    
-                </Schedule>
+
+                <div className="test">
+                    <div className="months">
+                        <ButtonText title="November"/>
+                        <ButtonText title="November"/>
+                        <ButtonText title="November"/>
+                        <ButtonText title="November"/>
+                        <ButtonText title="November"/>
+                        <ButtonText title="November"/>
+                    </div>
+
+                    <Schedule>
+                        
+                    </Schedule>
+                </div>
             </main>
         </Container>
     )

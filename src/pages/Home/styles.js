@@ -29,10 +29,24 @@ export const Container = styled.div`
             gap: 24px;
             
         }
+        .test {
+            width: 100%;
+
+            display: grid;
+            grid-template-columns: .5fr 1fr;
+            grid-template-areas:
+            "months" "schedule";
+        }
+
+        .months {
+            grid-area: "months";
+        }
     }
 `
 
 export const Schedule = styled.div`
+    grid-area: "schedule";
+
     height: 80%;
     padding: 48px;
     width: 600px;
