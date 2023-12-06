@@ -40,12 +40,18 @@ export function Home() {
 
                 <div className="test">
                     <div className="months">
-                        <ButtonText title="November"/>
-                        <ButtonText title="November"/>
-                        <ButtonText title="November"/>
-                        <ButtonText title="November"/>
-                        <ButtonText title="November"/>
-                        <ButtonText title="November"/>
+                        <ButtonText title="January" highlight={false}/>
+                        <ButtonText title="February" highlight={false}/>
+                        <ButtonText title="March" highlight={false}/>
+                        <ButtonText title="April" highlight={false}/>
+                        <ButtonText title="May" highlight={false}/>
+                        <ButtonText title="June" highlight={false}/>
+                        <ButtonText title="July" highlight={false}/>
+                        <ButtonText title="August" highlight={false}/>
+                        <ButtonText title="September" highlight={false}/>
+                        <ButtonText title="October" highlight={false}/>
+                        <ButtonText title="November" highlight={true}/>
+                        <ButtonText title="December" highlight={false}/>
                     </div>
 
                     <Schedule>

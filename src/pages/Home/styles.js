@@ -47,10 +47,15 @@ export const Container = styled.div`
 export const Schedule = styled.div`
     grid-area: "schedule";
 
-    height: 80%;
+    min-height: 600px;
+    max-height: fit-content;
     padding: 48px;
     width: 600px;
     border-radius: 12px;
 
-    background-color: ${({ theme }) => theme.COLORS.DARK_200};
+    background-image: linear-gradient(
+        to top left,
+        ${({ theme}) => theme.COLORS.DARK_100},
+        ${({ theme}) => theme.COLORS.DARK_200}
+    );
 `
