@@ -3,6 +3,7 @@ import { Container, Schedule } from "./styles";
 import { Header } from "../../components/Header";
 import { Day } from "../../components/Day";
 import { ButtonText } from "../../components/ButtonText";
+import { AddTask } from "../../components/AddTask";
 
 export function Home() {
     const data = new Date()
@@ -55,7 +56,7 @@ export function Home() {
                     </div>
 
                     <Schedule>
-                        
+                        <AddTask placeholder="odaddads" isNew/>
                     </Schedule>
                 </div>
             </main>
