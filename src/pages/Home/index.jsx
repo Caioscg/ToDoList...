@@ -56,8 +56,9 @@ export function Home() {
                     </div>
 
                     <Schedule>
+                        <AddTask placeholder="" value="College"/>
+                        <AddTask placeholder="" value="Workout"/>
                         <AddTask placeholder="Type down your plans" isNew/>
-                        <AddTask placeholder=""/>
                     </Schedule>
                 </div>
             </main>

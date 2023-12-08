@@ -14,8 +14,8 @@ export default {
         BLUE_300: "#90A8AB",
         OLD_BLUE: "#395B64",
 
-        RED_100: "#9C0415",
-        RED_200: "#750310",
+        RED_100: "#CF2938",
+        RED_200: "#9C0415",
 
     }
 }

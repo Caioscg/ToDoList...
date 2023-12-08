@@ -15,6 +15,7 @@ export const Container = styled.div`
     line-height: 100%;
 
     padding: 6px 16px;
+    margin-top: 16px;
 
     > button {
         border: none;
@@ -38,6 +39,7 @@ export const Container = styled.div`
         min-width: fit-content;
 
         padding-left: 2px;
+        width: 100%;
     }
 
     .input-new {

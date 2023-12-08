@@ -17,7 +17,7 @@ export function AddTask({isNew = false, value, onClick, ...rest}) {
                 onClick={onClick}
                 className={isNew ? 'button-add' : 'button-delete'}
             >
-                { isNew ? <FiPlus /> : <FiX /> }
+                { isNew ? <FiPlus size={16}/> : <FiX size={16}/> }
             </button>
         </Container>
     )
