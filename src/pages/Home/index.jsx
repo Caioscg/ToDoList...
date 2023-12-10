@@ -1,11 +1,31 @@
-import { Container, Schedule } from "./styles";
+import { Container, Schedule, Arrow } from "./styles";
 
 import { Header } from "../../components/Header";
 import { Day } from "../../components/Day";
 import { ButtonText } from "../../components/ButtonText";
 import { AddTask } from "../../components/AddTask";
 
+import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md"
+
+import { useRef } from "react";
+
 export function Home() {
+    const scrollDaysList = useRef(null)
+
+    const handlePrevDaysList = () => {
+        scrollDaysList.current.scrollBy({
+        left: -450,
+        behavior: 'smooth'
+        });
+    }
+
+    const handleNextDaysList = () => {
+        scrollDaysList.current.scrollBy({
+            left: 450,
+            behavior: 'smooth'
+        });
+    }
+
     const data = new Date()
 
     const month = data.getMonth() + 1
@@ -19,7 +39,7 @@ export function Home() {
             amountOfDays = 30
         }
         else if (month == 2) {
-            amountOfDays = 29 // calc ano bixesto
+            amountOfDays = 29 //TODO calc ano bixesto
         }
         else {
             amountOfDays = 31
@@ -33,26 +53,68 @@ export function Home() {
         <Container>
             <Header />
             <main>
-                <div className="days">
-                    <Day number={28} day="Tue"/>
-                    <Day number={29} day="Wed"/>
-                    <Day number={30} day="Thu"/>
+                <div className="daysBar">
+                    <Arrow
+                        direction="prev"
+                        onClick={handlePrevDaysList}
+                    >
+                        <MdOutlineKeyboardArrowLeft />
+                    </Arrow>
+                    <div className="days" ref={scrollDaysList}>
+                        <Day number={1} day="Wed"/>
+                        <Day number={2} day="Thu"/>
+                        <Day number={3} day="Fri"/>
+                        <Day number={4} day="Sat"/>
+                        <Day number={5} day="Sun"/>
+                        <Day number={6} day="Mon"/>
+                        <Day number={7} day="Tue"/>
+                        <Day number={8} day="Wed"/>
+                        <Day number={9} day="Thu"/>
+                        <Day number={10} day="Fri"/>
+                        <Day number={11} day="Sat"/>
+                        <Day number={12} day="Sun"/>
+                        <Day number={13} day="Mon"/>
+                        <Day number={14} day="Tue"/>
+                        <Day number={15} day="Wed"/>
+                        <Day number={16} day="Thu"/>
+                        <Day number={17} day="Fri"/>
+                        <Day number={18} day="Sat"/>
+                        <Day number={19} day="Sun"/>
+                        <Day number={20} day="Mon"/>
+                        <Day number={21} day="Tue"/>
+                        <Day number={22} day="Wed"/>
+                        <Day number={23} day="Thu"/>
+                        <Day number={24} day="Fri"/>
+                        <Day number={25} day="Sat"/>
+                        <Day number={26} day="Sun"/>
+                        <Day number={27} day="Mon"/>
+                        <Day number={28} day="Tue"/>
+                        <Day number={29} day="Wed"/>
+                        <Day number={30} day="Thu"/>
+
+                    </div>
+                    <Arrow
+                        direction="next"
+                        onClick={handleNextDaysList}
+                    >
+                        <MdOutlineKeyboardArrowRight />
+                    </Arrow>
                 </div>
 
                 <div className="test">
                     <div className="months">
-                        <ButtonText title="January" highlight={false}/>
-                        <ButtonText title="February" highlight={false}/>
-                        <ButtonText title="March" highlight={false}/>
-                        <ButtonText title="April" highlight={false}/>
-                        <ButtonText title="May" highlight={false}/>
-                        <ButtonText title="June" highlight={false}/>
-                        <ButtonText title="July" highlight={false}/>
-                        <ButtonText title="August" highlight={false}/>
-                        <ButtonText title="September" highlight={false}/>
-                        <ButtonText title="October" highlight={false}/>
-                        <ButtonText title="November" highlight={true}/>
-                        <ButtonText title="December" highlight={false}/>
+                        <ButtonText title="January"/>
+                        <ButtonText title="February"/>
+                        <ButtonText title="March"/>
+                        <ButtonText title="April"/>
+                        <ButtonText title="May"/>
+                        <ButtonText title="June"/>
+                        <ButtonText title="July"/>
+                        <ButtonText title="August"/>
+                        <ButtonText title="September"/>
+                        <ButtonText title="October"/>
+                        <ButtonText title="November" highlight/>
+                        <ButtonText title="December"/>
                     </div>
 
                     <Schedule>

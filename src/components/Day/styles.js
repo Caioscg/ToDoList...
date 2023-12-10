@@ -1,9 +1,12 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-    width: fit-content;
+    min-width: 85px;
     padding: 16px 24px;;
     border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     background-color: ${({ theme }) => theme.COLORS.DARK_100};
     cursor: pointer;

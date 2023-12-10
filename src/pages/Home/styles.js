@@ -18,16 +18,24 @@ export const Container = styled.div`
         flex-direction: column;
         align-items: center;
         gap: 56px;
+        overflow-x: hidden;
 
         .days {
-            width: 100%;
+            max-width: 1000px;
             padding: 0 64px;
 
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 24px;
-            
+
+            overflow-x: hidden;
+
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+        }
+        .daysBar {
+            display: flex;
+            gap: 24px;
         }
         .test {
             width: 100%;
@@ -58,4 +66,29 @@ export const Schedule = styled.div`
         ${({ theme}) => theme.COLORS.DARK_100},
         ${({ theme}) => theme.COLORS.DARK_200}
     );
+`
+
+export const Arrow = styled.button`
+    border: none;
+
+    color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    font-size: 3.5rem;
+    background: transparent;
+
+    &:hover {
+        filter: brightness(1);
+    }
+
+    ${({ direction }) => direction === 'prev' ? ` 
+        left: 1rem;
+        -webkit-mask-image: -webkit-gradient(linear, left top, right top,
+        from(rgba(0,0,0,1)), to(rgba(0,0,0, .1)));
+        text-align: left;
+        `: ` 
+        right: 2rem;
+        -webkit-mask-image: -webkit-gradient(linear, right top, left top, 
+        from(rgba(0,0,0,1)), to(rgba(0,0,0, .1)));
+        text-align: right;
+        `
+    }
 `
