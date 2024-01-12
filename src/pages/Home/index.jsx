@@ -32,6 +32,8 @@ export function Home() {
     const dayOfTheMonth = data.getDate()
     const dayOfTheWeek = data.getDay()
 
+    console.log(dayOfTheWeek)
+
     let amountOfDays
 
     function monthDays() {
