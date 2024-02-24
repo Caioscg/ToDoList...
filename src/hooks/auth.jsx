@@ -35,6 +35,21 @@ function AuthProvider({ children }) {
 
         setData({}) // goes to auth routes
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem("@todolist:token")
+        const user = localStorage.getItem("@todolist:user")
+
+        if (token && user) {
+            api.defaults.headers.common['Authorization'] = `Bearer ${token}` // apply token to all reqs of this user
+
+            setData({
+                token,
+                user: JSON.parse(user)
+            })
+        }
+
+    }, [])
 //TODO colocar caixa em volta dos meses e titulo nas schedules dos dias
 
 } 
