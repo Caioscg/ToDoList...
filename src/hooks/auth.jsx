@@ -52,4 +52,21 @@ function AuthProvider({ children }) {
     }, [])
 //TODO colocar caixa em volta dos meses e titulo nas schedules dos dias
 
-} 
+    return(
+        <AuthContext value={{
+            signIn,
+            singOut,
+            user: data.user
+        }}>
+            {children}
+        </AuthContext>
+    )
+}
+
+function useAuth() {
+    const context = useContext(AuthContext)
+
+    return context
+}
+
+export { AuthProvider, useAuth }
