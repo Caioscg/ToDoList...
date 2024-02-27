@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useAuth } from "../../hooks/auth";
+
 import { Container, Main, SignIn, SignUp } from "./styles";
 
 import { Input } from "../../components/Input";
@@ -9,6 +12,19 @@ import { useRef } from "react";
 import logo from "../../assets/todolist-high-resolution-logo-transparent.png"
 
 export function Enter() {
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const { signIn, signUp } = useAuth()
+
+    function handleSignUp() {
+        if (!name || !email || !password) {
+            return alert("Preencha todos os campos!")
+        }
+        signUp({  })
+    }
+
     const signin = useRef(null)
     const signup = useRef(null)
     const main = useRef(null)
@@ -40,9 +56,26 @@ export function Enter() {
         <Container>
             <SignUp id="hide" ref={signup}>
                 <h1>Sign Up</h1>
-                <Input icon={FiUser} placeholder="Name"/>
-                <Input icon={FiMail} placeholder="E-mail"/>
-                <Input icon={FiLock} type="password" placeholder="Password"/>
+
+                <Input 
+                    icon={FiUser} 
+                    placeholder="Name" 
+                    onChange={e => setName(e.target.value)}
+                />
+
+                <Input 
+                    icon={FiMail} 
+                    placeholder="E-mail"
+                    onChange={e => setEmail(e.target.value)}
+                />
+
+                <Input 
+                    icon={FiLock} 
+                    type="password" 
+                    placeholder="Password"
+                    onChange={e => setPassword(e.target.value)}
+                />
+
                 <Button title="Create your account"/>
                 <a onClick={showSignIn}>I already have an account</a>
             </SignUp>
