@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
+import { api } from "../../services/api";
 
 import { Container, Main, SignIn, SignUp } from "./styles";
 
@@ -16,13 +17,31 @@ export function Enter() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const { signIn, signUp } = useAuth()
+    const { signIn } = useAuth()
 
-    function handleSignUp() {
+    async function handleSignUp() {
         if (!name || !email || !password) {
             return alert("Preencha todos os campos!")
         }
-        signUp({  })
+
+        await api.post("/users", { name, email, password })
+            .then(() => {
+                alert("Usuário criado com sucesso!")  //TODO trocar para alert mais estilizado
+                setEmail("")    // reset email and password bc its the same state to sing in and sign up
+                setPassword("")
+                showSignIn()
+            })
+            .catch(error => {
+                if (error.message) {
+                    alert(error.response.data.message)
+                } else {
+                    alert("Não foi possível cadastrar!")
+                }
+            })
+    }
+
+    function handleSignIn() {
+        signIn({ email, password })
     }
 
     const signin = useRef(null)
@@ -76,7 +95,11 @@ export function Enter() {
                     onChange={e => setPassword(e.target.value)}
                 />
 
-                <Button title="Create your account"/>
+                <Button 
+                    title="Create your account" 
+                    onClick={handleSignUp}
+                />
+
                 <a onClick={showSignIn}>I already have an account</a>
             </SignUp>
 
@@ -100,9 +123,25 @@ export function Enter() {
 
             <SignIn ref={signin}>
                 <h1>Sign In</h1>
-                <Input icon={FiMail} placeholder="E-mail"/>
-                <Input icon={FiLock} type="password" placeholder="Password"/>
-                <Button title="Sing In"/>
+                
+                <Input 
+                    icon={FiMail} 
+                    placeholder="E-mail"
+                    onChange={e => setEmail(e.target.value)}
+                />
+                
+                <Input 
+                    icon={FiLock} 
+                    type="password" 
+                    placeholder="Password"
+                    onChange={e => setPassword(e.target.value)}
+                />
+                
+                <Button 
+                    title="Sing In"
+                    onClick={handleSignIn}
+                />
+
                 <a onClick={showSignUp}>I don't have an account yet</a>
             </SignIn>
 

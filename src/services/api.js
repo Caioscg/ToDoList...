@@ -1,6 +1,6 @@
 import axios from "axios" //npm install axios
 
 export const api = axios.create({
-    baseURL: "https://localhost:3333"  //* DEV
+    baseURL: "http://localhost:3333"  //* DEV
 })
 
