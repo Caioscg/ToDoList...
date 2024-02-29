@@ -17,7 +17,7 @@ export function Enter() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const { signIn } = useAuth()
+    const { signIn, user } = useAuth()
 
     async function handleSignUp() {
         if (!name || !email || !password) {
@@ -42,6 +42,7 @@ export function Enter() {
 
     function handleSignIn() {
         signIn({ email, password })
+        console.log(user)
     }
 
     const signin = useRef(null)

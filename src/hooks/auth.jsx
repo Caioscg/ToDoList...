@@ -20,7 +20,7 @@ function AuthProvider({ children }) {
             setData({ user, token })
 
         } catch(error) {
-            if (error.message)  {
+            if (error.response) {
                 alert(error.response.data.message)
             }
             else {
@@ -53,13 +53,13 @@ function AuthProvider({ children }) {
 //TODO colocar caixa em volta dos meses e titulo nas schedules dos dias
 
     return(
-        <AuthContext value={{
+        <AuthContext.Provider value={{
             signIn,
             singOut,
             user: data.user
         }}>
             {children}
-        </AuthContext>
+        </AuthContext.Provider>
     )
 }
 
