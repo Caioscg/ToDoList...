@@ -29,7 +29,7 @@ function AuthProvider({ children }) {
         }
     }
 
-    async function singOut() {
+    async function signOut() {
         localStorage.removeItem("@todolist:user")
         localStorage.removeItem("@todolist:token")
 
@@ -55,7 +55,7 @@ function AuthProvider({ children }) {
     return(
         <AuthContext.Provider value={{
             signIn,
-            singOut,
+            signOut,
             user: data.user
         }}>
             {children}
