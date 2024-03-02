@@ -16,7 +16,9 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.COLORS.DARK_100};
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
-    :hover {
-        background-color: ${({ theme }) => theme.COLORS.DARK_100};
+    transition: all .3s;
+
+    &:hover {
+        transform: scale(1.1);
     }
 `
