@@ -4,7 +4,9 @@ export const Container = styled.div`
     cursor: pointer;
     width: fit-content;
 
-    padding: 4px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
     border-radius: 6px;
     
     font-size: 18px;
@@ -12,9 +14,9 @@ export const Container = styled.div`
 
     margin-bottom: 20px;
 
-    font-weight: ${({ highlight }) => highlight? 700 : 500 };
-    color: ${({ theme }) => theme.COLORS.DARK_100};
-    background-color: ${({ theme }) => theme.COLORS.DARK_400};
+    font-weight: ${({ highlight }) => highlight? 700 : 400 };
+    color: ${({ theme }) => theme.COLORS.LIGHT_200};
+    background-color: ${({ theme }) => theme.COLORS.DARK_500};
 
     transition: all .3s;
 

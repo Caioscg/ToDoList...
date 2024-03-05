@@ -58,8 +58,14 @@ export const Schedule = styled.div`
     min-height: 600px;
     max-height: fit-content;
     padding: 48px;
+    padding-top: 32px;
     width: 600px;
     border-radius: 12px;
+
+    h1 {
+        text-align: center;
+        margin-bottom: 32px;
+    }
 
     background-image: linear-gradient(
         to top left,

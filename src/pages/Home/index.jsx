@@ -120,6 +120,7 @@ export function Home() {
                     </div>
 
                     <Schedule>
+                        <h1>23/03</h1>
                         <AddTask placeholder="" value="College"/>
                         <AddTask placeholder="" value="Workout"/>
                         <AddTask placeholder="Type down your plans" isNew/>
