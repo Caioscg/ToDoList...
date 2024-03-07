@@ -7,9 +7,13 @@ import { AddTask } from "../../components/AddTask";
 
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md"
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+import { api } from "../../services/api";
 
 export function Home() {
+    const [ tasks, setTasks ] = useState([])
+    const [ newTask, setNewTask ] = useState("")
+
     const scrollDaysList = useRef(null)
 
     const handlePrevDaysList = () => {
@@ -32,7 +36,7 @@ export function Home() {
     const dayOfTheMonth = data.getDate()
     const dayOfTheWeek = data.getDay()
 
-    console.log(dayOfTheWeek)
+    //console.log(dayOfTheWeek)
 
     let amountOfDays
 
@@ -48,8 +52,13 @@ export function Home() {
         }
     }
     
-
     monthDays()
+
+    useEffect(() => {
+        async function fetchTasks() {
+            const response = await api.get("/schedule")  //TODO ver como receber o get so do dia 
+        }
+    }, [])
 
     return(
         <Container>
