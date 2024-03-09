@@ -56,8 +56,13 @@ export function Home() {
 
     useEffect(() => {
         async function fetchTasks() {
-            const response = await api.get("/schedule")  //TODO ver como receber o get so do dia 
+            const response = await api.get(`/schedule/${dayOfTheMonth}/${month}`)
+            const tasksData = response.data.tasks
+
+            setTasks(tasksData.map((task) => task))
         }
+        fetchTasks()
+        //TODO console.log(tasks)
     }, [])
 
     return(
