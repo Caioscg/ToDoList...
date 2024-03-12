@@ -56,15 +56,14 @@ export function Home() {
 
     useEffect(() => {
         async function fetchTasks() {
-            const response = await api.get(`/schedule/${dayOfTheMonth}/${month}`)
-            const tasksData = response.data.tasks.map((task) => task.description)
-            
-            setTasks()
-            console.log(tasksData.map((task) => task))
+            const response = await api.get(`/schedule/${9}/${3}`)
+            const tasksData = response.data.tasks
+
+            setTasks(tasksData.map((task) => task.description))
         }
         fetchTasks()
     }, [])
-
+    
     return(
         <Container>
             <Header />
