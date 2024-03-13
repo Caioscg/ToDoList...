@@ -32,11 +32,14 @@ export function Home() {
 
     const data = new Date()
 
-    const month = data.getMonth() + 1
-    const dayOfTheMonth = data.getDate()
+    let month = data.getMonth() + 1 < 10 ? "0"+String(data.getMonth() + 1) : data.getMonth() + 1
+    let day = data.getDate() < 10 ? "0"+data.getDate() : data.getDate()
     const dayOfTheWeek = data.getDay()
 
-    //console.log(dayOfTheWeek)
+    function calcDate() {
+        {day < 10 ? day = "0"+day : day}
+        {month < 10 ? month = "0" : month}
+    }
 
     let amountOfDays
 
@@ -51,8 +54,6 @@ export function Home() {
             amountOfDays = 31
         }
     }
-    
-    monthDays()
 
     useEffect(() => {
         async function fetchTasks() {
@@ -61,6 +62,8 @@ export function Home() {
 
             setTasks(tasksData.map((task) => task.description))
         }
+        calcDate()
+        monthDays()
         fetchTasks()
     }, [])
     
@@ -133,10 +136,21 @@ export function Home() {
                     </div>
 
                     <Schedule>
-                        <h1>23/03</h1>
-                        <AddTask placeholder="" value="College"/>
-                        <AddTask placeholder="" value="Workout"/>
-                        <AddTask placeholder="Type down your plans" isNew/>
+                        <h1>{day}/{month}</h1>
+                        {
+                            tasks.map((task, index) => (
+                                <AddTask 
+                                    key={String(index)}
+                                    value={task}
+                                />
+                            ))
+                        }
+                        <AddTask 
+                            isNew
+                            placeholder="Type down your plans"
+                            onChange={e => setNewTask(e.target.value)}
+                            value={newTask}
+                        />
                     </Schedule>
                 </div>
             </main>
