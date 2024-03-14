@@ -1,8 +1,8 @@
 import { Container } from "./styles";
 
-export function Day({ number, day, ...rest }) {
+export function Day({ number, day, onClick, ...rest }) {
     return(
-        <Container {...rest}>
+        <Container {...rest} onClick={onClick}>
             <div className="day-number">
                 {number}
             </div>
