@@ -32,8 +32,9 @@ export function Home() {
 
     const data = new Date()
 
-    let month = data.getMonth() + 1 < 10 ? "0"+String(data.getMonth() + 1) : data.getMonth() + 1
-    let day = data.getDate() < 10 ? "0"+data.getDate() : data.getDate()
+    const [ day, setDay ] = useState(data.getDate())
+    const [ month, setMonth ] = useState(data.getMonth() + 1)
+
     const dayOfTheWeek = data.getDay()
 
     let amountOfDays
@@ -51,29 +52,45 @@ export function Home() {
     }
 
     function changeDay(newDay) {
-        day = newDay
+        setDay(newDay)
     }
 
     function changeMonth(newMonth) {
-        month = newMonth
+        setMonth(newMonth)
+        setDay(1)
     }
 
     function createNewTask() {
         if (!newTask) return alert("Type down a description to your task.")
 
-        
+        try {
+            api.post(`/schedule/${day}/${month}`, {
+                tasks: newTask
+            })
+        } catch(error) {
+            if (error.response) {
+                alert(error.response.data.message)
+            }
+            else {
+                alert("Não foi possível cadastrar o prato.")
+            }
+        }
     }
 
     useEffect(() => {
         async function fetchTasks() {
-            const response = await api.get(`/schedule/${9}/${3}`)
+            setTasks([])   // clear other day's tasks
+
+            const response = await api.get(`/schedule/${day}/${month}`)
             const tasksData = response.data.tasks
+            
+            if (!tasksData) return  // a day with no tasks yet
 
             setTasks(tasksData.map((task) => task.description))
         }
         monthDays()
         fetchTasks()
-    }, [])
+    }, [day])
     
     return(
         <Container>
@@ -144,7 +161,7 @@ export function Home() {
                     </div>
 
                     <Schedule>
-                        <h1>{day}/{month}</h1>
+                        <h1>{day < 10 ? "0"+day : day}/{month < 10 ? "0"+month : month}</h1>
                         {
                             tasks.map((task, index) => (
                                 <AddTask 
