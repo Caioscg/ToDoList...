@@ -60,11 +60,11 @@ export function Home() {
         setDay(1)
     }
 
-    function createNewTask() {
-        if (!newTask) return alert("Type down a description to your task.") //TODO fazer a nova task criada aparecer ja como umas das tasks
+    async function createNewTask() {
+        if (!newTask) return alert("Type down a description to your task.")
 
         try {
-            api.post(`/schedule/${day}/${month}`, {
+            await api.post(`/schedule/${day}/${month}`, {
                 task: newTask
             })
         } catch(error) {
@@ -75,6 +75,14 @@ export function Home() {
                 alert("Não foi possível cadastrar o prato.")
             }
         }
+        
+        setTasks(prev => [...prev, newTask])  //TODO ver pq ao add a task ela fica sem nome é pq do description e task.description
+        setNewTask("")
+    }
+
+    async function handleRemoveTask(taskToDelete) {
+        setTasks(prev => prev.filter(task => task !== taskToDelete))
+        await api.delete(`/task/${taskToDelete.id}`)
     }
 
     useEffect(() => {
@@ -86,7 +94,7 @@ export function Home() {
             
             if (!tasksData) return  // a day with no tasks yet
 
-            setTasks(tasksData.map((task) => task.description))
+            setTasks(tasksData.map((task) => task))
         }
         monthDays()
         fetchTasks()
@@ -166,7 +174,8 @@ export function Home() {
                             tasks.map((task, index) => (
                                 <AddTask 
                                     key={String(index)}
-                                    value={task}
+                                    value={task.description}
+                                    onClick={() => handleRemoveTask(task)}
                                 />
                             ))
                         }
