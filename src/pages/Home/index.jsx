@@ -61,11 +61,11 @@ export function Home() {
     }
 
     function createNewTask() {
-        if (!newTask) return alert("Type down a description to your task.")
+        if (!newTask) return alert("Type down a description to your task.") //TODO fazer a nova task criada aparecer ja como umas das tasks
 
         try {
             api.post(`/schedule/${day}/${month}`, {
-                tasks: newTask
+                task: newTask
             })
         } catch(error) {
             if (error.response) {
@@ -174,6 +174,7 @@ export function Home() {
                             isNew
                             placeholder="Type down your plans"
                             onChange={e => setNewTask(e.target.value)}
+                            onClick={createNewTask}
                             value={newTask}
                         />
                     </Schedule>
