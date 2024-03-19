@@ -63,6 +63,12 @@ export function Home() {
     async function createNewTask() {
         if (!newTask) return alert("Type down a description to your task.")
 
+        setTasks(prev => [...prev, {
+            description: newTask
+        }])  
+        
+        setNewTask("")
+
         try {
             await api.post(`/schedule/${day}/${month}`, {
                 task: newTask
@@ -75,9 +81,6 @@ export function Home() {
                 alert("Não foi possível cadastrar o prato.")
             }
         }
-        
-        setTasks(prev => [...prev, newTask])  //TODO ver pq ao add a task ela fica sem nome é pq do description e task.description
-        setNewTask("")
     }
 
     async function handleRemoveTask(taskToDelete) {
