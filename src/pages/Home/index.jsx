@@ -14,6 +14,8 @@ export function Home() {
     const [ tasks, setTasks ] = useState([])
     const [ newTask, setNewTask ] = useState("")
 
+    const [setAmountOfDays, AmountOfDays] = useState(30)
+
     const scrollDaysList = useRef(null)
 
     const handlePrevDaysList = () => {
@@ -37,17 +39,15 @@ export function Home() {
 
     const dayOfTheWeek = data.getDay()
 
-    let amountOfDays
-
     function monthDays() {
         if (month == 4 || month == 6 || month == 9 || month == 11) {
-            amountOfDays = 30
+            setAmountOfDays(30)
         }
         else if (month == 2) {
-            amountOfDays = 29 //TODO calc ano bixesto
+            setAmountOfDays(29) //TODO calc ano bixesto
         }
         else {
-            amountOfDays = 31
+            setAmountOfDays(31)
         }
     }
 
@@ -57,6 +57,7 @@ export function Home() {
 
     function changeMonth(newMonth) {
         setMonth(newMonth)
+        monthDays()
         setDay(1)
     }
 
@@ -102,6 +103,8 @@ export function Home() {
         monthDays()
         fetchTasks()
     }, [day])
+
+    console.log(AmountOfDays)
     
     return(
         <Container>
@@ -144,7 +147,8 @@ export function Home() {
                         <Day number={27} day="Mon" onClick={() => changeDay(27)}/>
                         <Day number={28} day="Tue" onClick={() => changeDay(28)}/>
                         <Day number={29} day="Wed" onClick={() => changeDay(29)}/>
-                        <Day number={30} day="Thu" onClick={() => changeDay(30)}/>
+                        { AmountOfDays>=30 ? <Day number={30} day="Thu" onClick={() => changeDay(30)}/> : console.log(AmountOfDays)}
+                        { AmountOfDays==31 ? <Day number={31} day="Fri" onClick={() => changeDay(31)}/> : ""}
 
                     </div>
                     <Arrow
@@ -157,18 +161,18 @@ export function Home() {
 
                 <div className="test">
                     <div className="months">
-                        <ButtonText title="January"/>
-                        <ButtonText title="February"/>
-                        <ButtonText title="March"/>
-                        <ButtonText title="April"/>
-                        <ButtonText title="May"/>
-                        <ButtonText title="June"/>
-                        <ButtonText title="July"/>
-                        <ButtonText title="August"/>
-                        <ButtonText title="September"/>
-                        <ButtonText title="October"/>
-                        <ButtonText title="November" highlight/>
-                        <ButtonText title="December"/>
+                        <ButtonText title="January" onClick={() => changeMonth(1)}/>
+                        <ButtonText title="February" onClick={() => changeMonth(2)}/>
+                        <ButtonText title="March" onClick={() => changeMonth(3)}/>
+                        <ButtonText title="April" onClick={() => changeMonth(4)}/>
+                        <ButtonText title="May" onClick={() => changeMonth(5)}/>
+                        <ButtonText title="June" onClick={() => changeMonth(6)}/>
+                        <ButtonText title="July" onClick={() => changeMonth(7)}/>
+                        <ButtonText title="August" onClick={() => changeMonth(8)}/>
+                        <ButtonText title="September" onClick={() => changeMonth(9)}/>
+                        <ButtonText title="October" onClick={() => changeMonth(10)}/>
+                        <ButtonText title="November" highlight onClick={() => changeMonth(11)}/>
+                        <ButtonText title="December" onClick={() => changeMonth(12)}/>
                     </div>
 
                     <Schedule>
