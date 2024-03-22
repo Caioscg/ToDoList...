@@ -14,42 +14,43 @@ export function Home() {
     const [ tasks, setTasks ] = useState([])
     const [ newTask, setNewTask ] = useState("")
 
-    const [setAmountOfDays, AmountOfDays] = useState(30)
-
+    
     const scrollDaysList = useRef(null)
-
+    
     const handlePrevDaysList = () => {
         scrollDaysList.current.scrollBy({
-        left: -450,
-        behavior: 'smooth'
+            left: -450,
+            behavior: 'smooth'
         });
     }
-
+    
     const handleNextDaysList = () => {
         scrollDaysList.current.scrollBy({
             left: 450,
             behavior: 'smooth'
         });
     }
-
+    
     const data = new Date()
-
+    
     const [ day, setDay ] = useState(data.getDate())
     const [ month, setMonth ] = useState(data.getMonth() + 1)
 
     const dayOfTheWeek = data.getDay()
 
-    function monthDays() {
+    function monthDays(month) {
         if (month == 4 || month == 6 || month == 9 || month == 11) {
-            setAmountOfDays(30)
+            return 30
         }
         else if (month == 2) {
-            setAmountOfDays(29) //TODO calc ano bixesto
+            return 29 //TODO calc ano bixesto
         }
         else {
-            setAmountOfDays(31)
+            return 31
         }
     }
+
+    const [ AmountOfDays, setAmountOfDays ] = useState(monthDays(month))
 
     function changeDay(newDay) {
         setDay(newDay)
@@ -57,7 +58,7 @@ export function Home() {
 
     function changeMonth(newMonth) {
         setMonth(newMonth)
-        monthDays()
+        setAmountOfDays(monthDays(newMonth))
         setDay(1)
     }
 
@@ -100,11 +101,8 @@ export function Home() {
 
             setTasks(tasksData.map((task) => task))
         }
-        monthDays()
         fetchTasks()
     }, [day])
-
-    console.log(AmountOfDays)
     
     return(
         <Container>
@@ -147,8 +145,8 @@ export function Home() {
                         <Day number={27} day="Mon" onClick={() => changeDay(27)}/>
                         <Day number={28} day="Tue" onClick={() => changeDay(28)}/>
                         <Day number={29} day="Wed" onClick={() => changeDay(29)}/>
-                        { AmountOfDays>=30 ? <Day number={30} day="Thu" onClick={() => changeDay(30)}/> : console.log(AmountOfDays)}
-                        { AmountOfDays==31 ? <Day number={31} day="Fri" onClick={() => changeDay(31)}/> : ""}
+                        { AmountOfDays>=30 ? <Day number={30} day="Thu" onClick={() => changeDay(30)}/> : "" }
+                        { AmountOfDays==31 ? <Day number={31} day="Fri" onClick={() => changeDay(31)}/> : "" }
 
                     </div>
                     <Arrow
