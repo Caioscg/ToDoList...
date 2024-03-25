@@ -19,7 +19,7 @@ export function Home() {
     const handlePrevDaysList = () => {
         scrollDaysList.current.scrollBy({
             left: -450,
-            behavior: 'smooth'
+            behavior: 'smooth',
         });
     }
     
@@ -29,13 +29,21 @@ export function Home() {
             behavior: 'smooth'
         });
     }
-    
+
+    const handleScrollBack = () => {
+        scrollDaysList.current.scrollBy({
+            left: -3000,
+            behavior: 'smooth'
+        })
+    }
+
     const data = new Date()
     
     const [ day, setDay ] = useState(data.getDate())
     const [ month, setMonth ] = useState(data.getMonth() + 1)
 
-    let dayOfTheWeek = data.getDay()
+    let baseDayOfTheWeek = new Date(`${month} 1, 2024`)
+    const [ dayOfTheWeek, setDayOfTheWeek ] = useState(baseDayOfTheWeek.getDay())
 
     function monthDays(month) {
         if (month == 4 || month == 6 || month == 9 || month == 11) {
@@ -60,9 +68,10 @@ export function Home() {
         setAmountOfDays(monthDays(newMonth))
 
         let newDate = new Date(`${newMonth} 1, 2024`)
-        dayOfTheWeek = newDate.getDay()  //todo fazer ser estado pra sempre que att o mes
-        //console.log(dayOfTheWeek)
+        setDayOfTheWeek(newDate.getDay())
+
         setDay(1)
+        handleScrollBack()
     }
 
     async function createNewTask() {
@@ -105,8 +114,18 @@ export function Home() {
             setTasks(tasksData.map((task) => task))
         }
         fetchTasks()
-    }, [day])
-    
+    }, [day, month])
+
+    useEffect(() => {
+        const beginnerScroll = () => {
+            scrollDaysList.current.scrollBy({
+                left: day<8? 0 : day<13? 60*day : 87*day,
+                behavior: 'smooth'
+            })
+        }
+        beginnerScroll()
+    }, [])
+
     return(
         <Container>
             <Header />
@@ -119,37 +138,37 @@ export function Home() {
                         <MdOutlineKeyboardArrowLeft />
                     </Arrow>
                     <div className="days" ref={scrollDaysList}>
-                        <Day number={1} day={dayOfTheWeek++} onClick={() => changeDay(1)}/>
-                        <Day number={2} day={dayOfTheWeek++} onClick={() => changeDay(2)}/>
-                        <Day number={3} day={dayOfTheWeek++} onClick={() => changeDay(3)}/>
-                        <Day number={4} day={dayOfTheWeek++} onClick={() => changeDay(4)}/>
-                        <Day number={5} day={dayOfTheWeek++} onClick={() => changeDay(5)}/>
-                        <Day number={6} day={dayOfTheWeek++} onClick={() => changeDay(6)}/>
-                        <Day number={7} day={dayOfTheWeek++} onClick={() => changeDay(7)}/>
-                        <Day number={8} day={dayOfTheWeek++} onClick={() => changeDay(8)}/>
-                        <Day number={9} day={dayOfTheWeek++} onClick={() => changeDay(9)}/>
-                        <Day number={10} day={dayOfTheWeek++} onClick={() => changeDay(10)}/>
-                        <Day number={11} day={dayOfTheWeek++} onClick={() => changeDay(11)}/>
-                        <Day number={12} day={dayOfTheWeek++} onClick={() => changeDay(12)}/>
-                        <Day number={13} day={dayOfTheWeek++} onClick={() => changeDay(13)}/>
-                        <Day number={14} day={dayOfTheWeek++} onClick={() => changeDay(14)}/>
-                        <Day number={15} day={dayOfTheWeek++} onClick={() => changeDay(15)}/>
-                        <Day number={16} day={dayOfTheWeek++} onClick={() => changeDay(16)}/>
-                        <Day number={17} day={dayOfTheWeek++} onClick={() => changeDay(17)}/>
-                        <Day number={18} day={dayOfTheWeek++} onClick={() => changeDay(18)}/>
-                        <Day number={19} day={dayOfTheWeek++} onClick={() => changeDay(19)}/>
-                        <Day number={20} day={dayOfTheWeek++} onClick={() => changeDay(20)}/>
-                        <Day number={21} day={dayOfTheWeek++} onClick={() => changeDay(21)}/>
-                        <Day number={22} day={dayOfTheWeek++} onClick={() => changeDay(22)}/>
-                        <Day number={23} day={dayOfTheWeek++} onClick={() => changeDay(23)}/>
-                        <Day number={24} day={dayOfTheWeek++} onClick={() => changeDay(24)}/>
-                        <Day number={25} day={dayOfTheWeek++} onClick={() => changeDay(25)}/>
-                        <Day number={26} day={dayOfTheWeek++} onClick={() => changeDay(26)}/>
-                        <Day number={27} day={dayOfTheWeek++} onClick={() => changeDay(27)}/>
-                        <Day number={28} day={dayOfTheWeek++} onClick={() => changeDay(28)}/>
-                        <Day number={29} day={dayOfTheWeek++} onClick={() => changeDay(29)}/>
-                        { AmountOfDays>=30 ? <Day number={30} day={dayOfTheWeek++} onClick={() => changeDay(30)}/> : "" }
-                        { AmountOfDays==31 ? <Day number={31} day={dayOfTheWeek++} onClick={() => changeDay(31)}/> : "" }
+                    <Day number={1} day={dayOfTheWeek} onClick={() => changeDay(1)}/>
+                        <Day number={2} day={dayOfTheWeek + 1} onClick={() => changeDay(2)}/>
+                        <Day number={3} day={dayOfTheWeek + 2} onClick={() => changeDay(3)}/>
+                        <Day number={4} day={dayOfTheWeek + 3} onClick={() => changeDay(4)}/>
+                        <Day number={5} day={dayOfTheWeek + 4} onClick={() => changeDay(5)}/>
+                        <Day number={6} day={dayOfTheWeek + 5} onClick={() => changeDay(6)}/>
+                        <Day number={7} day={dayOfTheWeek + 6} onClick={() => changeDay(7)}/>
+                        <Day number={8} day={dayOfTheWeek + 7} onClick={() => changeDay(8)}/>
+                        <Day number={9} day={dayOfTheWeek + 8} onClick={() => changeDay(9)}/>
+                        <Day number={10} day={dayOfTheWeek + 9} onClick={() => changeDay(10)}/>
+                        <Day number={11} day={dayOfTheWeek + 10} onClick={() => changeDay(11)}/>
+                        <Day number={12} day={dayOfTheWeek + 11} onClick={() => changeDay(12)}/>
+                        <Day number={13} day={dayOfTheWeek + 12} onClick={() => changeDay(13)}/>
+                        <Day number={14} day={dayOfTheWeek + 13} onClick={() => changeDay(14)}/>
+                        <Day number={15} day={dayOfTheWeek + 14} onClick={() => changeDay(15)}/>
+                        <Day number={16} day={dayOfTheWeek + 15} onClick={() => changeDay(16)}/>
+                        <Day number={17} day={dayOfTheWeek + 16} onClick={() => changeDay(17)}/>
+                        <Day number={18} day={dayOfTheWeek + 17} onClick={() => changeDay(18)}/>
+                        <Day number={19} day={dayOfTheWeek + 18} onClick={() => changeDay(19)}/>
+                        <Day number={20} day={dayOfTheWeek + 19} onClick={() => changeDay(20)}/>
+                        <Day number={21} day={dayOfTheWeek + 20} onClick={() => changeDay(21)}/>
+                        <Day number={22} day={dayOfTheWeek + 21} onClick={() => changeDay(22)}/>
+                        <Day number={23} day={dayOfTheWeek + 22} onClick={() => changeDay(23)}/>
+                        <Day number={24} day={dayOfTheWeek + 23} onClick={() => changeDay(24)}/>
+                        <Day number={25} day={dayOfTheWeek + 24} onClick={() => changeDay(25)}/>
+                        <Day number={26} day={dayOfTheWeek + 25} onClick={() => changeDay(26)}/>
+                        <Day number={27} day={dayOfTheWeek + 26} onClick={() => changeDay(27)}/>
+                        <Day number={28} day={dayOfTheWeek + 27} onClick={() => changeDay(28)}/>
+                        <Day number={29} day={dayOfTheWeek + 28} onClick={() => changeDay(29)}/>
+                        { AmountOfDays>=30 ? <Day number={30} day={dayOfTheWeek + 39} onClick={() => changeDay(30)}/> : "" }
+                        { AmountOfDays==31 ? <Day number={31} day={dayOfTheWeek + 30} onClick={() => changeDay(31)}/> : "" }
 
                     </div>
                     <Arrow

@@ -1,7 +1,6 @@
 import { Container } from "./styles";
 
 export function Day({ number, day, onClick, ...rest }) {
-    console.log(day)
     return(
         <Container {...rest} onClick={onClick}>
             <div className="day-number">
