@@ -1,6 +1,6 @@
 import { Container } from "./styles";
 
-import { FiPlus, FiX } from "react-icons/fi"
+import { FiPlus, FiX, FiCheck } from "react-icons/fi"
 
 export function AddTask({isNew = false, value, onClick, ...rest}) {
     return(
@@ -12,6 +12,7 @@ export function AddTask({isNew = false, value, onClick, ...rest}) {
                 className={isNew ? 'input-new' : 'input-old'}
                 {...rest}
             />
+            { isNew ? "" : <FiCheck size={24} className="check-btn" /> }
             <button 
                 type="button"
                 onClick={onClick}

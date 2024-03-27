@@ -23,6 +23,12 @@ export const Container = styled.div`
         margin-top: 2px;
     }
 
+    .check-btn {
+        cursor: pointer;
+        color: green;
+        margin-right: 10px;
+    }
+
     .button-delete {
         color: ${({ theme }) => theme.COLORS.RED_100};
     }

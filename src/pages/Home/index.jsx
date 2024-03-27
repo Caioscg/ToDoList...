@@ -102,7 +102,7 @@ export function Home() {
         await api.delete(`/task/${taskToDelete.id}`)
     }
 
-    useEffect(() => {
+    useEffect(() => { //todo highlight mes 
         async function fetchTasks() {
             setTasks([])   // clear other day's tasks
 
@@ -181,18 +181,18 @@ export function Home() {
 
                 <div className="test">
                     <div className="months">
-                        <ButtonText title="January" onClick={() => changeMonth(1)}/>
-                        <ButtonText title="February" onClick={() => changeMonth(2)}/>
-                        <ButtonText title="March" onClick={() => changeMonth(3)}/>
-                        <ButtonText title="April" onClick={() => changeMonth(4)}/>
-                        <ButtonText title="May" onClick={() => changeMonth(5)}/>
-                        <ButtonText title="June" onClick={() => changeMonth(6)}/>
-                        <ButtonText title="July" onClick={() => changeMonth(7)}/>
-                        <ButtonText title="August" onClick={() => changeMonth(8)}/>
-                        <ButtonText title="September" onClick={() => changeMonth(9)}/>
-                        <ButtonText title="October" onClick={() => changeMonth(10)}/>
-                        <ButtonText title="November" highlight onClick={() => changeMonth(11)}/>
-                        <ButtonText title="December" onClick={() => changeMonth(12)}/>
+                        <ButtonText title="January" highlight={month == 1} onClick={() => changeMonth(1)}/>
+                        <ButtonText title="February" highlight={month == 2} onClick={() => changeMonth(2)}/>
+                        <ButtonText title="March" highlight={month == 3} onClick={() => changeMonth(3)}/>
+                        <ButtonText title="April" highlight={month == 4} onClick={() => changeMonth(4)}/>
+                        <ButtonText title="May" highlight={month == 5} onClick={() => changeMonth(5)}/>
+                        <ButtonText title="June" highlight={month == 6} onClick={() => changeMonth(6)}/>
+                        <ButtonText title="July" highlight={month == 7} onClick={() => changeMonth(7)}/>
+                        <ButtonText title="August" highlight={month == 8} onClick={() => changeMonth(8)}/>
+                        <ButtonText title="September" highlight={month == 9} onClick={() => changeMonth(9)}/>
+                        <ButtonText title="October" highlight={month == 10} onClick={() => changeMonth(10)}/>
+                        <ButtonText title="November" highlight={month == 11} onClick={() => changeMonth(11)}/>
+                        <ButtonText title="December" highlight={month == 12} onClick={() => changeMonth(12)}/>
                     </div>
 
                     <Schedule>
