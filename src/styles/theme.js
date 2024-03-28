@@ -17,5 +17,7 @@ export default {
         RED_100: "#CF2938",
         RED_200: "#9C0415",
 
+        GREEN: "#50B531"
+
     }
 }

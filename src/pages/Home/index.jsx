@@ -10,7 +10,7 @@ import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-i
 import { useRef, useState, useEffect } from "react";
 import { api } from "../../services/api";
 
-export function Home() {
+export function Home() {  //todo USAR o LOADING para nao ter 0 TAGS durante o fetchTags
     const [ tasks, setTasks ] = useState([])
     const [ newTask, setNewTask ] = useState("")
 
@@ -95,6 +95,8 @@ export function Home() {
                 alert("Não foi possível cadastrar o prato.")
             }
         }
+
+        fetchTasks()
     }
 
     async function handleRemoveTask(taskToDelete) {
@@ -102,17 +104,23 @@ export function Home() {
         await api.delete(`/task/${taskToDelete.id}`)
     }
 
-    useEffect(() => { //todo highlight mes 
-        async function fetchTasks() {
-            setTasks([])   // clear other day's tasks
+    async function toggleCheckTask(task) {
+        await api.patch(`/task/${task.id}`)
+        fetchTasks()
+    }
 
-            const response = await api.get(`/schedule/${day}/${month}`)
-            const tasksData = response.data.tasks
-            
-            if (!tasksData) return  // a day with no tasks yet
+    async function fetchTasks() {
+        setTasks([])   // clear other day's tasks
 
-            setTasks(tasksData.map((task) => task))
-        }
+        const response = await api.get(`/schedule/${day}/${month}`)
+        const tasksData = response.data.tasks
+        
+        if (!tasksData) return  // a day with no tasks yet
+
+        setTasks(tasksData.map((task) => task))
+    }
+
+    useEffect(() => {
         fetchTasks()
     }, [day, month])
 
@@ -203,6 +211,8 @@ export function Home() {
                                     key={String(index)}
                                     value={task.description}
                                     onClick={() => handleRemoveTask(task)}
+                                    onCheck={() => toggleCheckTask(task)}
+                                    status={task.status}
                                 />
                             ))
                         }

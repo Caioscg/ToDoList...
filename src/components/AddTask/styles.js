@@ -4,8 +4,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
 
-    background-color: transparent;
-    color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    background-color: ${({ theme, status }) => status ? theme.COLORS.GREEN : "transparent"};;
 
     border: ${({ theme, isNew }) => isNew ? `2px dashed ${theme.COLORS.LIGHT_200}` : `1px solid ${theme.COLORS.LIGHT_100}`};
 
@@ -25,7 +24,7 @@ export const Container = styled.div`
 
     .check-btn {
         cursor: pointer;
-        color: green;
+        color: ${({ theme, status }) => status ? theme.COLORS.DARK_100 : theme.COLORS.GREEN};
         margin-right: 10px;
     }
 
@@ -38,11 +37,13 @@ export const Container = styled.div`
     }
 
     > input {
-        color: ${({ theme }) => theme.COLORS.LIGHT_100};
+        color: ${({ theme, status }) => status ? theme.COLORS.DARK_100 : theme.COLORS.LIGHT_100};
 
         border: none;
         border-radius: 0%;
         min-width: fit-content;
+
+        font-weight: 500;
 
         padding-left: 2px;
         width: 100%;
@@ -53,6 +54,6 @@ export const Container = styled.div`
         }
 
     .input-old {
-        background-color: transparent;
+        background-color: ${({ theme, status }) => status ? theme.COLORS.GREEN : "transparent"};
     }
 `
