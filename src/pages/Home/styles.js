@@ -50,6 +50,24 @@ export const Container = styled.div`
             grid-area: "months";
         }
     }
+
+    @media (max-width: 1150px) {
+        .daysBar {
+            max-width: 950px;
+        }
+    }
+
+    @media (max-width: 970px) {
+        .daysBar {
+            max-width: 800px;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .daysBar {
+            max-width: 600px;
+        }
+    }
 `
 
 export const Schedule = styled.div`
@@ -72,6 +90,10 @@ export const Schedule = styled.div`
         ${({ theme}) => theme.COLORS.DARK_100},
         ${({ theme}) => theme.COLORS.DARK_200}
     );
+
+    @media (max-width: 970px) {
+        width: 400px;
+    }
 `
 
 export const Arrow = styled.button`

@@ -146,7 +146,7 @@ export function Home() {  //todo USAR o LOADING para nao ter 0 TAGS durante o fe
                         <MdOutlineKeyboardArrowLeft />
                     </Arrow>
                     <div className="days" ref={scrollDaysList}>
-                    <Day number={1} day={dayOfTheWeek} onClick={() => changeDay(1)}/>
+                        <Day number={1} day={dayOfTheWeek} onClick={() => changeDay(1)}/>
                         <Day number={2} day={dayOfTheWeek + 1} onClick={() => changeDay(2)}/>
                         <Day number={3} day={dayOfTheWeek + 2} onClick={() => changeDay(3)}/>
                         <Day number={4} day={dayOfTheWeek + 3} onClick={() => changeDay(4)}/>
