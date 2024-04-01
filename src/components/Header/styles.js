@@ -28,4 +28,42 @@ export const Container = styled.div`
             cursor: pointer;
          }
     }
+
+    @media (max-width: 800px) {
+        > img {
+            width: 180px;
+        }
+
+        > div {
+            gap: 16px;
+
+            span {
+                font-size: 18px;
+            }
+
+            svg {
+                width: 24px;
+            }
+        }
+    }
+
+    @media (max-width: 600px) {
+        padding: 0 24px;
+
+        > img {
+            width: 150px;
+        }
+
+        > div {
+            gap: 12px;
+
+            span {
+                font-size: 16px;
+            }
+
+            svg {
+                width: 20px;
+            }
+        }
+    }
 `

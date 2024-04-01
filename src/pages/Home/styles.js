@@ -67,6 +67,20 @@ export const Container = styled.div`
         .daysBar {
             max-width: 600px;
         }
+        .days {
+            padding: 0;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .daysBar {
+            max-width: 500px;
+        }
+        .days {
+            padding: 0;
+            overflow-x: scroll;
+
+        }
     }
 `
 
@@ -118,5 +132,9 @@ export const Arrow = styled.button`
         from(rgba(0,0,0,1)), to(rgba(0,0,0, .1)));
         text-align: right;
         `
+    }
+
+    @media (max-width: 600px) {
+        display: none;
     }
 `

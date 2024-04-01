@@ -20,4 +20,15 @@ export const Container = styled.div`
         font-weight: 500;
         text-align: center;
     }
+
+    @media (max-width: 600px) {
+        min-width: 65px;
+        .day-number{
+            font-size: 20px;
+        }
+
+        .day-week {
+            font-size: 12px;
+        }
+    }
 `
