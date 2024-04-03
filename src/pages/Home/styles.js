@@ -10,6 +10,22 @@ export const Container = styled.div`
     "header"
     "content";
 
+    ::-webkit-scrollbar {
+        width: 20px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: transparent;
+        margin-block: 12px;
+        margin-bottom: 40px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: ${({ theme }) => theme.COLORS.DARK_400};
+        border-radius: 100vw;
+        border: 5px solid ${ ({ theme }) => theme.COLORS.BLUE_200};
+    }
+
     > main {
         grid-area: "content";
         padding: 32px;
@@ -52,34 +68,41 @@ export const Container = styled.div`
     }
 
     @media (max-width: 1150px) {
-        .daysBar {
-            max-width: 950px;
+        main {
+            .daysBar {
+                max-width: 950px;
+            }
         }
     }
 
     @media (max-width: 970px) {
-        .daysBar {
-            max-width: 800px;
+        main {
+            .daysBar {
+                max-width: 800px;
+            }
         }
     }
 
     @media (max-width: 800px) {
-        .daysBar {
-            max-width: 600px;
-        }
-        .days {
-            padding: 0;
+        main {
+            .daysBar {
+                max-width: 600px;
+            }
+            .days {
+                padding: 0;
+            }
         }
     }
 
     @media (max-width: 600px) {
-        .daysBar {
-            max-width: 500px;
-        }
-        .days {
-            padding: 0;
-            overflow-x: scroll;
+        main {
+            .daysBar {
+                max-width: 400px;
+            }
 
+            .days {
+                overflow-x: auto;
+            }
         }
     }
 `

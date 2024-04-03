@@ -10,7 +10,7 @@ import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-i
 import { useRef, useState, useEffect } from "react";
 import { api } from "../../services/api";
 
-export function Home() {  //todo USAR o LOADING para nao ter 0 TAGS durante o fetchTags
+export function Home() {  //todo coocar o icone de meses pra mobile
     const [ tasks, setTasks ] = useState([])
     const [ newTask, setNewTask ] = useState("")
 

@@ -23,4 +23,8 @@ export const Container = styled.div`
     &:hover {
         transform: scale(1.1);
     }
+
+    @media (max-width: 600px) {
+        display: none;
+    }
 `
