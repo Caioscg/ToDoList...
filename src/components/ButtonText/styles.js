@@ -24,6 +24,11 @@ export const Container = styled.div`
         transform: scale(1.1);
     }
 
+    @media (max-width: 970px) {
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+
     @media (max-width: 600px) {
         display: none;
     }

@@ -6,6 +6,7 @@ import { ButtonText } from "../../components/ButtonText";
 import { AddTask } from "../../components/AddTask";
 
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md"
+import { TbSquareRoundedArrowRightFilled } from "react-icons/tb"
 
 import { useRef, useState, useEffect } from "react";
 import { api } from "../../services/api";
@@ -137,6 +138,7 @@ export function Home() {  //todo coocar o icone de meses pra mobile
     return(
         <Container>
             <Header />
+            <TbSquareRoundedArrowRightFilled id="menu" size={32}/>
             <main>
                 <div className="daysBar">
                     <Arrow
@@ -187,7 +189,7 @@ export function Home() {  //todo coocar o icone de meses pra mobile
                     </Arrow>
                 </div>
 
-                <div className="test">
+                <div className="content">
                     <div className="months">
                         <ButtonText title="January" highlight={month == 1} onClick={() => changeMonth(1)}/>
                         <ButtonText title="February" highlight={month == 2} onClick={() => changeMonth(2)}/>

@@ -10,6 +10,10 @@ export const Container = styled.div`
     "header"
     "content";
 
+    #menu {
+        display: none;
+    }
+
     ::-webkit-scrollbar {
         width: 20px;
     }
@@ -53,7 +57,7 @@ export const Container = styled.div`
             display: flex;
             gap: 24px;
         }
-        .test {
+        .content {
             width: 100%;
 
             display: grid;
@@ -95,8 +99,10 @@ export const Container = styled.div`
     }
 
     @media (max-width: 600px) {
+        grid-template-rows: 92px auto;
         main {
             .daysBar {
+                flex-direction: column;
                 max-width: 400px;
             }
 
@@ -110,8 +116,7 @@ export const Container = styled.div`
 export const Schedule = styled.div`
     grid-area: "schedule";
 
-    min-height: 600px;
-    max-height: fit-content;
+    max-height: 65vh;
     padding: 48px;
     padding-top: 32px;
     width: 600px;
@@ -130,6 +135,7 @@ export const Schedule = styled.div`
 
     @media (max-width: 970px) {
         width: 400px;
+        height: 500px;
     }
 `
 
@@ -156,7 +162,7 @@ export const Arrow = styled.button`
         text-align: right;
         `
     }
-
+    
     @media (max-width: 600px) {
         display: none;
     }
