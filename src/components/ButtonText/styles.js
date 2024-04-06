@@ -31,5 +31,6 @@ export const Container = styled.div`
 
     @media (max-width: 600px) {
         display: none;
+        border: 1px solid ${({ theme }) => theme.COLORS.LIGHT_200};;
     }
 `

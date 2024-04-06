@@ -15,7 +15,7 @@ export const Container = styled.div`
     }
 
     ::-webkit-scrollbar {
-        width: 20px;
+        width: 12px;
     }
 
     ::-webkit-scrollbar-track {
@@ -25,9 +25,9 @@ export const Container = styled.div`
     }
 
     ::-webkit-scrollbar-thumb {
-        background-color: ${({ theme }) => theme.COLORS.DARK_400};
+        background-color: ${({ theme }) => theme.COLORS.DARK_200};
         border-radius: 100vw;
-        border: 5px solid ${ ({ theme }) => theme.COLORS.BLUE_200};
+        border: 3px solid ${ ({ theme }) => theme.COLORS.DARK_100};
     }
 
     > main {
@@ -109,6 +109,22 @@ export const Container = styled.div`
             .days {
                 overflow-x: auto;
             }
+            .content {
+                display: flex;
+                justify-content: center;
+
+                .months {
+                    background-color: ${({ theme }) => theme.COLORS.DARK_100};
+                    border-top-right-radius: 100%;
+                    border-bottom-right-radius: 100%;
+
+                    //padding-top: 12px;
+                    padding-right: 100px;
+
+                    position: absolute;
+                    left: 0;
+                }
+            }
         }
     }
 `
@@ -121,6 +137,13 @@ export const Schedule = styled.div`
     padding-top: 32px;
     width: 600px;
     border-radius: 12px;
+    overflow-x: auto;
+
+    ::-webkit-scrollbar-thumb {
+        background-color: ${({ theme }) => theme.COLORS.DARK_200};
+        border-radius: 100vw;
+        border: 3px solid ${ ({ theme }) => theme.COLORS.DARK_100};
+    }
 
     h1 {
         text-align: center;

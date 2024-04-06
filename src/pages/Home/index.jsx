@@ -11,7 +11,7 @@ import { TbSquareRoundedArrowRightFilled } from "react-icons/tb"
 import { useRef, useState, useEffect } from "react";
 import { api } from "../../services/api";
 
-export function Home() {  //todo coocar o icone de meses pra mobile
+export function Home() {
     const [ tasks, setTasks ] = useState([])
     const [ newTask, setNewTask ] = useState("")
 
