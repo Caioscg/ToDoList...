@@ -16,6 +16,7 @@ export function Home() {
     const [ newTask, setNewTask ] = useState("")
 
     const scrollDaysList = useRef(null)
+    const menuMonths = useRef(null)
     
     const handlePrevDaysList = () => {
         scrollDaysList.current.scrollBy({
@@ -122,11 +123,11 @@ export function Home() {
     }
 
     function openMenu() {
-        //add id na div dos months q vai ter animação pra aparecer
+        menuMonths.current.id = "show"
     }
 
     function closeMenu() {
-        //add id na div dos months q vai ter animação pra sumir
+        menuMonths.current.id = "hide"
     }
 
     useEffect(() => {
@@ -198,8 +199,8 @@ export function Home() {
 
                 <div className="content">
                     <TbSquareRoundedArrowRightFilled id="open-menu" onClick={openMenu} size={32}/>
-                    <TbSquareRoundedArrowLeftFilled id="close-menu" onClick={closeMenu} size={32}/>
-                    <div className="months">
+                    <div className="months" ref={menuMonths}>
+                        <TbSquareRoundedArrowLeftFilled id="close-menu" onClick={closeMenu} size={32}/>
                         <ButtonText title="January" highlight={month == 1} onClick={() => changeMonth(1)}/>
                         <ButtonText title="February" highlight={month == 2} onClick={() => changeMonth(2)}/>
                         <ButtonText title="March" highlight={month == 3} onClick={() => changeMonth(3)}/>

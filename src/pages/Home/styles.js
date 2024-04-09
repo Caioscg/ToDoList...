@@ -61,11 +61,18 @@ export const Container = styled.div`
             grid-template-areas:
             "months" "schedule";
 
-            #open-menu, #close-menu {
+            #open-menu {
                 display: none;
                 color: ${({ theme }) => theme.COLORS.DARK_100};
                 position: absolute;
                 cursor: pointer;
+            }
+            #close-menu {
+                display: none;
+                color: ${({ theme }) => theme.COLORS.LIGHT_100};
+                position: absolute;
+                cursor: pointer;
+                left: 90px;
             }
         }
 
@@ -120,6 +127,9 @@ export const Container = styled.div`
                     display: block;
                     left: 0;
                 }
+                #close-menu {
+                    display: block;
+                }
 
                 .months {
                     display: none;
@@ -133,6 +143,58 @@ export const Container = styled.div`
                     position: absolute;
                     left: 0;
                 }
+                #show {
+                    display: block;
+                    -webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	                animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                }
+                #hide {
+                    display: block;
+                    -webkit-animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	                animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                }
+            }
+        }
+        @-webkit-keyframes slide-right {
+            0% {
+                -webkit-transform: translateX(-100spx);
+                transform: translateX(-100px);
+            }
+            100% {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
+        @keyframes slide-right {
+            0% {
+                -webkit-transform: translateX(-100px);
+                transform: translateX(-100px);
+            }
+            100% {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+        }
+        @-webkit-keyframes slide-left {
+            0% {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+            100% {
+                -webkit-transform: translateX(-200px);
+                transform: translateX(-200px);
+                display: none;
+            }
+        }
+        @keyframes slide-left {
+            0% {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
+            100% {
+                -webkit-transform: translateX(-200px);
+                transform: translateX(-200px);
+                display: none;
             }
         }
     }
