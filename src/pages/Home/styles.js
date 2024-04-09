@@ -10,10 +10,6 @@ export const Container = styled.div`
     "header"
     "content";
 
-    #menu {
-        display: none;
-    }
-
     ::-webkit-scrollbar {
         width: 12px;
     }
@@ -64,6 +60,13 @@ export const Container = styled.div`
             grid-template-columns: .5fr 1fr;
             grid-template-areas:
             "months" "schedule";
+
+            #open-menu, #close-menu {
+                display: none;
+                color: ${({ theme }) => theme.COLORS.DARK_100};
+                position: absolute;
+                cursor: pointer;
+            }
         }
 
         .months {
@@ -113,12 +116,18 @@ export const Container = styled.div`
                 display: flex;
                 justify-content: center;
 
+                #open-menu {
+                    display: block;
+                    left: 0;
+                }
+
                 .months {
+                    display: none;
                     background-color: ${({ theme }) => theme.COLORS.DARK_100};
                     border-top-right-radius: 100%;
                     border-bottom-right-radius: 100%;
 
-                    //padding-top: 12px;
+                    padding-top: 12px;
                     padding-right: 100px;
 
                     position: absolute;

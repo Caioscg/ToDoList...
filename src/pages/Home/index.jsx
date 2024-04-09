@@ -6,7 +6,7 @@ import { ButtonText } from "../../components/ButtonText";
 import { AddTask } from "../../components/AddTask";
 
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md"
-import { TbSquareRoundedArrowRightFilled } from "react-icons/tb"
+import { TbSquareRoundedArrowRightFilled, TbSquareRoundedArrowLeftFilled } from "react-icons/tb"
 
 import { useRef, useState, useEffect } from "react";
 import { api } from "../../services/api";
@@ -121,6 +121,14 @@ export function Home() {
         setTasks(tasksData.map((task) => task))
     }
 
+    function openMenu() {
+        //add id na div dos months q vai ter animação pra aparecer
+    }
+
+    function closeMenu() {
+        //add id na div dos months q vai ter animação pra sumir
+    }
+
     useEffect(() => {
         fetchTasks()
     }, [day, month])
@@ -138,7 +146,6 @@ export function Home() {
     return(
         <Container>
             <Header />
-            <TbSquareRoundedArrowRightFilled id="menu" size={32}/>
             <main>
                 <div className="daysBar">
                     <Arrow
@@ -190,6 +197,8 @@ export function Home() {
                 </div>
 
                 <div className="content">
+                    <TbSquareRoundedArrowRightFilled id="open-menu" onClick={openMenu} size={32}/>
+                    <TbSquareRoundedArrowLeftFilled id="close-menu" onClick={closeMenu} size={32}/>
                     <div className="months">
                         <ButtonText title="January" highlight={month == 1} onClick={() => changeMonth(1)}/>
                         <ButtonText title="February" highlight={month == 2} onClick={() => changeMonth(2)}/>
