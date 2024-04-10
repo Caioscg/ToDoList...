@@ -197,6 +197,14 @@ export const Container = styled.div`
                 display: none;
             }
         }
+
+        @media (max-width: 450px) {
+            main {
+                .daysBar {
+                    max-width: 300px;
+                }
+            }
+        }
     }
 `
 
@@ -230,6 +238,10 @@ export const Schedule = styled.div`
     @media (max-width: 970px) {
         width: 400px;
         height: 500px;
+    }
+
+    @media (max-width: 450px) {
+        padding: 28px 12px;
     }
 `
 

@@ -56,4 +56,12 @@ export const Container = styled.div`
     .input-old {
         background-color: ${({ theme, status }) => status ? theme.COLORS.GREEN : "transparent"};
     }
+
+    @media (max-width: 450px) {
+        padding: 6px 10px;
+        input {
+            font-size: 12px;
+        }
+    }
+    
 `
