@@ -34,6 +34,20 @@ export const Container = styled.div`
     #signin-op {
         animation: moveMiddleRight ease-out .5s .5s backwards;
     }
+
+    @media (max-width: 1300px) {
+        padding: 0;
+    }
+
+    @media (max-width: 800px) {
+        flex-direction: column;
+        justify-content: center;
+
+        #main-right, #main-left {
+            animation: none;
+        }
+    }
+    
 `
 
 export const SignIn = styled.div`
@@ -61,6 +75,10 @@ export const SignIn = styled.div`
     a:hover {
         color: ${({ theme }) => theme.COLORS.DARK_100};
     }
+
+    @media (max-width: 800px) {
+        margin-top: 120px;
+    }
 `
 
 export const SignUp = styled.div`
@@ -87,6 +105,10 @@ export const SignUp = styled.div`
     }
     a:hover {
         color: ${({ theme }) => theme.COLORS.DARK_100};
+    }
+
+    @media (max-width: 800px) {
+        margin-top: 160px;
     }
 `
 
@@ -127,5 +149,33 @@ export const Main = styled.div`
         p {
             font-size: 20px;
         }
+    }
+
+    @media (max-width: 1050px) {
+        padding: 16px;
+
+        img {
+            width: 400px;
+        }
+
+        .signUpMessage, .signInMessage {
+            h1 {
+                font-size: 32px;
+            }
+            p {
+                font-size: 16px;
+            }
+        }
+    }
+
+    @media (max-width: 1050px) {
+        .signUpMessage, .signInMessage {
+            display: none;
+        }
+    }
+
+    @media (max-width: 800px) {
+            position: fixed;
+            top: 100px;
     }
 `
