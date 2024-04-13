@@ -14,4 +14,9 @@ export const Container = styled.button`
 
     background-color: ${({ theme }) => theme.COLORS.RED_100};
     color: ${({ theme }) => theme.COLORS.LIGHT_200};
+
+    @media (max-width: 400px) {
+        font-size: 13px;
+        height: 42px;
+    }
 `

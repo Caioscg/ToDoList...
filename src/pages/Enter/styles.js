@@ -79,6 +79,16 @@ export const SignIn = styled.div`
     @media (max-width: 800px) {
         margin-top: 120px;
     }
+
+    @media (max-width: 400px) {
+        padding: 48px 32px;
+        h1 {
+            font-size: 36px;
+        }
+        a {
+            font-size: 14px;
+        }
+    }
 `
 
 export const SignUp = styled.div`
@@ -109,6 +119,16 @@ export const SignUp = styled.div`
 
     @media (max-width: 800px) {
         margin-top: 160px;
+    }
+
+    @media (max-width: 400px) {
+        padding: 48px 32px;
+        h1 {
+            font-size: 36px;
+        }
+        a {
+            font-size: 14px;
+        }
     }
 `
 
@@ -177,5 +197,11 @@ export const Main = styled.div`
     @media (max-width: 800px) {
             position: fixed;
             top: 100px;
+    }
+
+    @media (max-width: 420px) {
+        img {
+            width: 300px;
+        }
     }
 `

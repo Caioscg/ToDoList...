@@ -30,4 +30,11 @@ export const Container = styled.div`
     > svg {
             margin-left: 16px; 
         }
+
+    @media (max-width: 400px) {
+        input {
+            padding: 12px;
+            font-size: 13px;
+        }
+    }
 `
