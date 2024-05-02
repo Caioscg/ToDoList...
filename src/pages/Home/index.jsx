@@ -11,9 +11,13 @@ import { TbSquareRoundedArrowRightFilled, TbSquareRoundedArrowLeftFilled } from 
 import { useRef, useState, useEffect } from "react";
 import { api } from "../../services/api";
 
+import FadeLoader from "react-spinners/FadeLoader";
+
 export function Home() {
     const [ tasks, setTasks ] = useState([])
     const [ newTask, setNewTask ] = useState("")
+
+    const [ loading, setLoading] = useState(false)
 
     const scrollDaysList = useRef(null)
     const menuMonths = useRef(null)
@@ -114,12 +118,16 @@ export function Home() {
     async function fetchTasks() {
         setTasks([])   // clear other day's tasks
 
+        setLoading(true)
+
         const response = await api.get(`/schedule/${day}/${month}`)
         const tasksData = response.data.tasks
         
         if (!tasksData) return  // a day with no tasks yet
 
         setTasks(tasksData.map((task) => task))
+
+        setLoading(false)
     }
 
     function openMenu() {
