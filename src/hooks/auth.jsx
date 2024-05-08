@@ -50,7 +50,6 @@ function AuthProvider({ children }) {
         }
 
     }, [])
-//TODO colocar caixa em volta dos meses e titulo nas schedules dos dias
 
     return(
         <AuthContext.Provider value={{

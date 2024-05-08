@@ -26,6 +26,10 @@ export const Container = styled.div`
         border: 3px solid ${ ({ theme }) => theme.COLORS.DARK_100};
     }
 
+    .spinner {
+        margin-top: 100px;
+    }
+
     > main {
         grid-area: "content";
         padding: 32px;

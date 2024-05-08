@@ -89,6 +89,8 @@ export function Home() {
         
         setNewTask("")
 
+        setLoading(true)
+
         try {
             await api.post(`/schedule/${day}/${month}`, {
                 task: newTask
@@ -98,21 +100,32 @@ export function Home() {
                 alert(error.response.data.message)
             }
             else {
-                alert("Não foi possível cadastrar o prato.")
+                alert("Not possible to sign in your task!")
             }
         }
 
         fetchTasks()
+
+        setLoading(false)
     }
 
     async function handleRemoveTask(taskToDelete) {
         setTasks(prev => prev.filter(task => task !== taskToDelete))
+
+        setLoading(true)
+
         await api.delete(`/task/${taskToDelete.id}`)
+
+        setLoading(false)
     }
 
     async function toggleCheckTask(task) {
+        setLoading(true)
+
         await api.patch(`/task/${task.id}`)
         fetchTasks()
+
+        setLoading(false)
     }
 
     async function fetchTasks() {
@@ -121,13 +134,15 @@ export function Home() {
         setLoading(true)
 
         const response = await api.get(`/schedule/${day}/${month}`)
+
+        setLoading(false)
+
         const tasksData = response.data.tasks
         
         if (!tasksData) return  // a day with no tasks yet
 
         setTasks(tasksData.map((task) => task))
 
-        setLoading(false)
     }
 
     function openMenu() {
@@ -225,25 +240,41 @@ export function Home() {
 
                     <Schedule>
                         <h1>{day < 10 ? "0"+day : day}/{month < 10 ? "0"+month : month}</h1>
+
                         {
-                            tasks.map((task, index) => (
+                            loading ?
+                            <FadeLoader 
+                                color={"#D2DBC8"}
+                                loading={loading}
+                                size={32}
+                                aria-label="Loading Spinner"
+                                data-testid="loader"
+                                className="spinner"
+                            />
+                            :
+                            <div className="tasks">
+                                {
+                                    tasks.map((task, index) => (
+                                        <AddTask 
+                                            key={String(index)}
+                                            value={task.description}
+                                            onClick={() => handleRemoveTask(task)}
+                                            onCheck={() => toggleCheckTask(task)}
+                                            status={task.status}
+                                        />
+                                    ))
+                                }
                                 <AddTask 
-                                    key={String(index)}
-                                    value={task.description}
-                                    onClick={() => handleRemoveTask(task)}
-                                    onCheck={() => toggleCheckTask(task)}
-                                    status={task.status}
+                                    isNew
+                                    placeholder="Type down your plans"
+                                    onChange={e => setNewTask(e.target.value)}
+                                    onClick={createNewTask}
+                                    value={newTask}
                                 />
-                            ))
+                            </div>
                         }
-                        <AddTask 
-                            isNew
-                            placeholder="Type down your plans"
-                            onChange={e => setNewTask(e.target.value)}
-                            onClick={createNewTask}
-                            value={newTask}
-                        />
                     </Schedule>
+
                 </div>
             </main>
         </Container>
