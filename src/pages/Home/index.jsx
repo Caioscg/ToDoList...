@@ -105,8 +105,6 @@ export function Home() {
         }
 
         fetchTasks()
-
-        setLoading(false)
     }
 
     async function handleRemoveTask(taskToDelete) {
@@ -124,8 +122,6 @@ export function Home() {
 
         await api.patch(`/task/${task.id}`)
         fetchTasks()
-
-        setLoading(false)
     }
 
     async function fetchTasks() {
@@ -135,14 +131,13 @@ export function Home() {
 
         const response = await api.get(`/schedule/${day}/${month}`)
 
-        setLoading(false)
-
         const tasksData = response.data.tasks
         
+        setLoading(false)
+
         if (!tasksData) return  // a day with no tasks yet
-
+        
         setTasks(tasksData.map((task) => task))
-
     }
 
     function openMenu() {

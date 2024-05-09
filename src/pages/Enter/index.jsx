@@ -52,8 +52,6 @@ export function Enter() {
         setLoading(true)
 
         signIn({ email, password })
-
-        setLoading(false)
     }
 
     const signin = useRef(null)
