@@ -4,7 +4,7 @@
 Welcome to ToDoList... app! <br>
 </p>
 
-## Site Link: https://foodexplorerrr.netlify.app
+## Site Link: https://todolist-csg.netlify.app
 
 <p align="center">
   <a href="#-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
